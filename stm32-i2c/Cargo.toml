@@ -1,0 +1,29 @@
+[package]
+name = "stm32-i2c"
+version = "0.1.0"
+authors = ["Sebastian Woetzel <wose@zuendmasse.de>"]
+
+[dependencies]
+cortex-m = "0.4.3"
+cortex-m-semihosting = "0.2.0"
+cortex-m-rtfm = "0.3.1"
+
+[dependencies.stm32f103xx-hal]
+features = ["rt"]
+git = "https://github.com/ilya-epifanov/stm32f103xx-hal.git"
+branch = "i2c-support"
+
+[dependencies.cortex-m-rt]
+features = ["abort-on-panic"]
+version = "0.3.12"
+
+[dependencies.bh1750]
+git = "https://github.com/wose/bh1750"
+
+[profile.dev]
+codegen-units = 1
+incremental = false
+
+[profile.release]
+debug = true
+lto = true
